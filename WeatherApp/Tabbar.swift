@@ -12,6 +12,12 @@ class Tabbar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        customizeTabBar()
+        
+    }
+    
+    func customizeTabBar(){
         let sunMaxImage = UIImage(systemName: "sun.max")
         let sunMaxFillImage = UIImage(systemName: "sun.max.fill")
         let starImage = UIImage(systemName: "star")
@@ -46,10 +52,7 @@ class Tabbar: UITabBarController {
                 NSAttributedString.Key.foregroundColor: UIColor.black
             ], for: .normal)
         }
-        
-        
     }
-    
 
     /*
     // MARK: - Navigation

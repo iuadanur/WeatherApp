@@ -14,7 +14,7 @@ enum WeatherError : Error {
 
 final class Webservice<T: Codable>{
     
-    func fetchData(url: URL, completion: @escaping (Result<T,WeatherError>) -> ()){
+    static func fetchData(url: URL, completion: @escaping (Result<T,WeatherError>) -> ()){
         
         URLSession.shared.dataTask(with: url) { data , response, error in
             if let _ = error {

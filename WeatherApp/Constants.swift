@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import UIKit
+
+struct API {
+    
+    static let API_KEY = ""
+}

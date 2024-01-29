@@ -10,6 +10,6 @@ import UIKit
 
 struct API{
     
-    static let API_KEY = ""
+    static let API_KEY = "fe034d524245acfaf0dfaad72f7c223f"
     
 }

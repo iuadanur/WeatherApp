@@ -23,10 +23,6 @@ struct City: Codable {
     let population, timezone, sunrise, sunset: Int
 }
 
-// MARK: - Coord
-struct Coord: Codable {
-    let lat, lon: Double
-}
 
 // MARK: - List
 struct List: Codable {
@@ -34,7 +30,7 @@ struct List: Codable {
     let main: MainClass
     let weather: [Weather]
     let clouds: Clouds
-    let wind: Wind
+    let wind: HWind
     let visibility, pop: Int
     let sys: Sys
     let dtTxt: String
@@ -45,10 +41,7 @@ struct List: Codable {
     }
 }
 
-// MARK: - Clouds
-struct Clouds: Codable {
-    let all: Int
-}
+
 
 // MARK: - MainClass
 struct MainClass: Codable {
@@ -69,18 +62,8 @@ struct MainClass: Codable {
     }
 }
 
-// MARK: - Sys
-struct Sys: Codable {
-    let pod: Pod
-}
-
-enum Pod: String, Codable {
-    case d = "d"
-    case n = "n"
-}
-
 // MARK: - Weather
-struct Weather: Codable {
+struct HourlyWeather: Codable {
     let id: Int
     let main: MainEnum
     let description: Description
@@ -100,8 +83,7 @@ enum MainEnum: String, Codable {
     case clouds = "Clouds"
 }
 
-// MARK: - Wind
-struct Wind: Codable {
+struct HWind: Codable {
     let speed: Double
     let deg: Int
     let gust: Double

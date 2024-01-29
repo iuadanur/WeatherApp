@@ -227,18 +227,30 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZDh-vJ-Ieu">
+                                <rect key="frame" x="0.0" y="82" width="393" height="721"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bAx-MK-aNu" id="R5f-WK-nZf"/>
+                                    <outlet property="delegate" destination="bAx-MK-aNu" id="qfF-eq-eun"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="isF-fs-Nev"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="nUI-dH-2BI" firstAttribute="top" secondItem="DCd-0i-oLo" secondAttribute="top" id="7Mo-XJ-zMc"/>
                             <constraint firstItem="Hqp-5w-LsP" firstAttribute="top" secondItem="DCd-0i-oLo" secondAttribute="top" id="QYD-pW-KdX"/>
+                            <constraint firstItem="ZDh-vJ-Ieu" firstAttribute="bottom" secondItem="isF-fs-Nev" secondAttribute="bottom" id="WfC-AH-kms"/>
                             <constraint firstAttribute="bottom" secondItem="nUI-dH-2BI" secondAttribute="bottom" id="YwW-IB-IQ8"/>
+                            <constraint firstItem="ZDh-vJ-Ieu" firstAttribute="leading" secondItem="isF-fs-Nev" secondAttribute="leading" id="fN0-5k-EdC"/>
                             <constraint firstItem="Hqp-5w-LsP" firstAttribute="leading" secondItem="DCd-0i-oLo" secondAttribute="leading" id="gFa-zd-ufB"/>
                             <constraint firstAttribute="trailing" secondItem="nUI-dH-2BI" secondAttribute="trailing" id="kBy-8j-Pdk"/>
                             <constraint firstAttribute="trailing" secondItem="Hqp-5w-LsP" secondAttribute="trailing" id="oWQ-jf-8dk"/>
+                            <constraint firstItem="ZDh-vJ-Ieu" firstAttribute="top" secondItem="isF-fs-Nev" secondAttribute="top" constant="82" id="sGi-Qf-w1B"/>
                             <constraint firstAttribute="bottom" secondItem="Hqp-5w-LsP" secondAttribute="bottom" id="uO2-wh-1jQ"/>
                             <constraint firstItem="nUI-dH-2BI" firstAttribute="leading" secondItem="DCd-0i-oLo" secondAttribute="leading" id="w8L-A7-7dM"/>
+                            <constraint firstItem="ZDh-vJ-Ieu" firstAttribute="trailing" secondItem="isF-fs-Nev" secondAttribute="trailing" id="xKG-XM-MQl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="sun.max" catalog="system" id="Od6-g9-wOh">
@@ -246,6 +258,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="backgroundImage" destination="nUI-dH-2BI" id="l7H-ee-KKR"/>
+                        <outlet property="tableView" destination="ZDh-vJ-Ieu" id="XPC-wm-amv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALV-xQ-ta7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

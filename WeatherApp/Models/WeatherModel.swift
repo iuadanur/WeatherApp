@@ -23,15 +23,6 @@ struct WeatherModel: Codable {
     let cod: Int
 }
 
-// MARK: - Clouds
-struct Clouds: Codable {
-    let all: Int
-}
-
-// MARK: - Coord
-struct Coord: Codable {
-    let lon, lat: Double
-}
 
 // MARK: - Main
 struct Main: Codable {
@@ -60,7 +51,6 @@ struct Weather: Codable {
     let main, description, icon: String
 }
 
-// MARK: - Wind
 struct Wind: Codable {
     let speed: Double
     let deg: Int
