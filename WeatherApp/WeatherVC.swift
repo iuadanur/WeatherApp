@@ -14,6 +14,8 @@ class WeatherVC: UIViewController {
     
     @IBOutlet weak var backgroundImage: UIImageView!
     
+    var refreshControl = UIRefreshControl()
+    
     let weatherViewModel = WeatherViewModel<WeatherModel>()
     let hourlyViewModel = WeatherViewModel<HourlyModel>()
     
@@ -24,10 +26,19 @@ class WeatherVC: UIViewController {
         tableView.register(UINib(nibName: "CityCell", bundle: nil), forCellReuseIdentifier: "cityCell")
         tableView.register(UINib(nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
         tableView.backgroundColor = UIColor.clear
-        setupTabbar()
+        tableView.addSubview(refreshControl)
         
+        refreshControl.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
+        setupTabbar()
         fetchDataAndUpdateUI()
         
+    }
+    @objc func refreshWeatherData(_ sender: Any) {
+        fetchDataAndUpdateUI()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.refreshControl.endRefreshing()
+                }
     }
     
     func setupTabbar() {

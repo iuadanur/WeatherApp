@@ -10,7 +10,7 @@ import Foundation
 class city {
     
     static let shared = city()
-    
     var name = ""
+    
     private init(){}
 }
