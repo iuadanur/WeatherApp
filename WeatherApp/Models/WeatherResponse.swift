@@ -7,9 +7,3 @@
 
 import Foundation
 
-struct WeatherResponse: Codable {
-    
-    let currentWeather: WeatherModel
-    let hourlyWeather: HourlyModel
-    
-}

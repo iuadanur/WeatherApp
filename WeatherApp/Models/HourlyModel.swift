@@ -7,10 +7,11 @@
 
 import Foundation
 
+// MARK: - HourlyModel
 struct HourlyModel: Codable {
     let cod: String
-    let message, cnt: Int
-    let list: [List]
+    let message,cnt: Int
+    let list: [HourlyList]
     let city: City
 }
 
@@ -18,36 +19,42 @@ struct HourlyModel: Codable {
 struct City: Codable {
     let id: Int
     let name: String
-    let coord: Coord
+    let coord: HourlyCoord
     let country: String
     let population, timezone, sunrise, sunset: Int
 }
 
+// MARK: - Coord
+struct HourlyCoord: Codable {
+    let lat, lon: Double
+}
 
 // MARK: - List
-struct List: Codable {
+struct HourlyList: Codable {
     let dt: Int
-    let main: MainClass
-    let weather: [Weather]
-    let clouds: Clouds
-    let wind: HWind
-    let visibility, pop: Int
-    let sys: Sys
+    let main: HourlyClass
+    let weather: [HourlyWeather]
+    let clouds: HourlyClouds
+    let wind: HourlyWind
+    let visibility: Int
+    let sys: HourlySys
     let dtTxt: String
 
     enum CodingKeys: String, CodingKey {
-        case dt, main, weather, clouds, wind, visibility, pop, sys
+        case dt, main, weather, clouds, wind, visibility, sys
         case dtTxt = "dt_txt"
     }
 }
 
-
+// MARK: - Clouds
+struct HourlyClouds: Codable {
+    let all: Int
+}
 
 // MARK: - MainClass
-struct MainClass: Codable {
-    let temp, feelsLike, tempMin, tempMax: Double
+struct HourlyClass: Codable {
+    let temp, feelsLike, tempMin, tempMax, tempKf: Double
     let pressure, seaLevel, grndLevel, humidity: Int
-    let tempKf: Double
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -62,28 +69,22 @@ struct MainClass: Codable {
     }
 }
 
+// MARK: - Sys
+struct HourlySys: Codable {
+    let pod: String
+}
+
+
 // MARK: - Weather
 struct HourlyWeather: Codable {
     let id: Int
-    let main: MainEnum
-    let description: Description
+    let main: String
+    let description: String
     let icon: String
 }
 
-enum Description: String, Codable {
-    case brokenClouds = "broken clouds"
-    case clearSky = "clear sky"
-    case fewClouds = "few clouds"
-    case overcastClouds = "overcast clouds"
-    case scatteredClouds = "scattered clouds"
-}
-
-enum MainEnum: String, Codable {
-    case clear = "Clear"
-    case clouds = "Clouds"
-}
-
-struct HWind: Codable {
+// MARK: - Wind
+struct HourlyWind: Codable {
     let speed: Double
     let deg: Int
     let gust: Double

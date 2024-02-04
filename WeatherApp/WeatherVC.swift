@@ -16,8 +16,7 @@ class WeatherVC: UIViewController {
     
     var refreshControl = UIRefreshControl()
     
-    let weatherViewModel = WeatherViewModel<WeatherModel>()
-    let hourlyViewModel = WeatherViewModel<HourlyModel>()
+    let weatherViewModel = WeatherViewModel.shared
     
     
     override func viewDidLoad() {
@@ -44,54 +43,21 @@ class WeatherVC: UIViewController {
     func setupTabbar() {
         tabBarController?.tabBar.backgroundColor = .white.withAlphaComponent(0.8)
     }
-    /*
+    
     func fetchDataAndUpdateUI() {
         weatherViewModel.fetchData { result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.updateUI()
+                switch result {
+                case .success:
+                    print("Weather data fetched successfully")
+                    // WeatherModel verileri çekildikten sonra UI güncelleme
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.updateUI()
+                    }
+                case .failure(let error):
+                    print("Fetch weather data error: \(error)")
                 }
-            case .failure(let error):
-                print("Fetch data error: \(error)")
-                // Hata durumunda gerekirse ek işlemler yapabilirsiniz.
             }
-        }
-    } */
-    func fetchDataAndUpdateUI() {
-        let dispatchGroup = DispatchGroup()
-        
-        // WeatherModel verilerini çek
-        dispatchGroup.enter()
-        weatherViewModel.fetchData { result in
-            switch result {
-            case .success:
-                print("Weather data fetched successfully")
-            case .failure(let error):
-                print("Fetch weather data error: \(error)")
-            }
-            dispatchGroup.leave()
-        }
-        
-        // HourlyModel verilerini çek
-        dispatchGroup.enter()
-        hourlyViewModel.fetchData { result in
-            switch result {
-            case .success:
-                print(result)
-                print("Hourly data fetched successfully")
-            case .failure(let error):
-                print("Fetch hourly data error: \(error)")
-            }
-            dispatchGroup.leave()
-        }
-        
-        // Her iki veri türünün de çekilmesini bekleyin ve UI güncellemesini yapın
-        dispatchGroup.notify(queue: .main) {
-            self.tableView.reloadData()
-            self.updateUI()
-        }
     }
 
     func updateUI() {
@@ -109,7 +75,6 @@ class WeatherVC: UIViewController {
                     //id = weatherInfo.id
                     main = weatherInfo.main
                     //description = weatherInfo.description
-                    
                 }
             
             DispatchQueue.main.async {
@@ -122,13 +87,7 @@ class WeatherVC: UIViewController {
                     cell.descriptionLabel.text = "\(main)"
                 }
             }
-            
-            
         }
-        if let hourlyModel = hourlyViewModel.model{
-            
-        }
-        
     }
 }
     //MARK: - Tableview Delegate&DataSource
@@ -183,6 +142,8 @@ class WeatherVC: UIViewController {
         }
         
     }
+
+//MARK: - SearchBarCellDelegate
 extension WeatherVC: SearchBarCellDelegate {
     func searchBarCell(_ cell: SearchBarCell, didTapSearchButtonWith searchTerm: String) {
         // SearchBarCell'den alınan şehir ismini kullanarak koordinatları almak için bir işlem yapın

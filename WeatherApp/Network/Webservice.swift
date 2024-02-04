@@ -7,25 +7,30 @@
 
 import Foundation
 
-enum WeatherError : Error {
-    case serverError
-    case parsingError
-}
-
-final class Webservice<T: Codable>{
+final class Webservice {
     
-    static func fetchData(url: URL, completion: @escaping (Result<T,WeatherError>) -> ()){
-        
-        URLSession.shared.dataTask(with: url) { data , response, error in
+    static let shared = Webservice()
+    
+    private init(){}
+    
+    func fetchData<T: Codable>(url: URL, completion: @escaping (Result<T, WeatherError>) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let _ = error {
                 completion(.failure(.serverError))
-            }else if let data = data {
-                do {
-                    let json = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(json))
-                } catch {
-                    completion(.failure(.parsingError))
-                }
+                return
+            }
+            
+            guard let data = data else {
+                completion(.failure(.serverError))
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(T.self, from: data)
+                completion(.success(decodedData))
+            } catch {
+                print(String(describing: error))
+                completion(.failure(.parsingError))
             }
         }.resume()
     }
