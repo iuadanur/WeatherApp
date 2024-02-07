@@ -24,6 +24,7 @@ class WeatherVC: UIViewController {
         
         tableView.register(UINib(nibName: "CityCell", bundle: nil), forCellReuseIdentifier: "cityCell")
         tableView.register(UINib(nibName: "SearchBarCell", bundle: nil), forCellReuseIdentifier: "searchBarCell")
+        tableView.register(UINib(nibName: "HourlyCell", bundle: nil), forCellReuseIdentifier: "hourlyCell")
         tableView.backgroundColor = UIColor.clear
         tableView.addSubview(refreshControl)
         
@@ -73,7 +74,7 @@ class WeatherVC: UIViewController {
             //var description = ""
             for weatherInfo in WeatherModel.weather {
                     //id = weatherInfo.id
-                    main = weatherInfo.main
+                    main = weatherInfo.description
                     //description = weatherInfo.description
                 }
             
@@ -87,6 +88,26 @@ class WeatherVC: UIViewController {
                     cell.descriptionLabel.text = "\(main)"
                 }
             }
+        }
+        if let hourlyModel = weatherViewModel.hourlyWeatherModel {
+           /*
+            for listInfo in hourlyModel.list {
+                let degree = listInfo.main.temp
+                let dt = listInfo.dt
+                
+                for weatherInfo in listInfo.weather {
+                    let icon = weatherInfo.icon
+                }
+            }
+            DispatchQueue.main.async {
+                // TableView'ın ilk hücresini güncelle
+                if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? HourlyCell {
+                    if let cWCell = cell.collectionView.cellForItem(at: IndexPath(row: 0, section: 1)) as? collectionViewCell {
+                        cWCell.degreeLabel.text = "\(String(format: "%.1f", degree))°C"
+                    }
+                }
+            }
+            */
         }
     }
 }
@@ -114,6 +135,10 @@ class WeatherVC: UIViewController {
                     cell.backgroundColor = UIColor.clear
                     updateUI()
                     return cell
+                case 2:
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "hourlyCell", for: indexPath) as! HourlyCell
+                    cell.backgroundColor = UIColor.clear
+                    return cell
                 default:
                     fatalError("Unexpected section")
                 }
@@ -125,6 +150,8 @@ class WeatherVC: UIViewController {
                 return 55
             case 1:
                 return 185
+            case 2:
+                return 195
             default:
                 return 100
             }
@@ -138,7 +165,7 @@ class WeatherVC: UIViewController {
         }
         
         func numberOfSections(in tableView: UITableView) -> Int {
-            return 2
+            return 3
         }
         
     }

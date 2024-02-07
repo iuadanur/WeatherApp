@@ -48,7 +48,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private func getLocation(completion: @escaping (Result<CLLocation, Error>) -> Void) {
         geocoder.geocodeAddressString(city.shared.name) { [weak self] (placemarks, error) in
-            guard let self = self else { return }
+            guard self != nil else { return }
             if let error = error {
                 completion(.failure(error))
                 return

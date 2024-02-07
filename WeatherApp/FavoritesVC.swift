@@ -22,7 +22,6 @@ class FavoritesVC: UIViewController {
         
         
         
-        
     }
     @objc func addButtonClicked(){
         self.performSegue(withIdentifier: "toAddPlace", sender: nil)
