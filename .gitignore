@@ -89,4 +89,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 WeatherApp/Network/API.swift
-WeatherApp/Images
+WeatherApp/Images/
