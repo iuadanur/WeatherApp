@@ -20,6 +20,7 @@ class CityCell: UITableViewCell {
     
     @IBOutlet weak var tempMaxLabel: UILabel!
     
+    @IBOutlet weak var weatherIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

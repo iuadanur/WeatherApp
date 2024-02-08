@@ -72,6 +72,7 @@ class WeatherVC: UIViewController {
             //var id = 0
             var main = ""
             //var description = ""
+            let icon = WeatherModel.weather.first?.icon ?? "01d"
             for weatherInfo in WeatherModel.weather {
                     //id = weatherInfo.id
                     main = weatherInfo.description
@@ -86,6 +87,7 @@ class WeatherVC: UIViewController {
                     cell.tempMinLabel.text = "L:\(String(format: "%.f°", tempMin))"
                     cell.tempMaxLabel.text = "H:\(String(format: "%.f°", tempMax))"
                     cell.descriptionLabel.text = "\(main)"
+                    cell.weatherIcon.image = UIImage(named: icon)
                 }
             }
         }
@@ -149,7 +151,7 @@ class WeatherVC: UIViewController {
             case 0:
                 return 55
             case 1:
-                return 185
+                return 240
             case 2:
                 return 195
             default:
