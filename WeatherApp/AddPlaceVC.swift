@@ -7,16 +7,29 @@
 
 import UIKit
 
-class AddPlace: UIViewController {
+class AddPlaceVC: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var CityTextField: UITextField!
+    
+    @IBOutlet weak var commentTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.navigationBar.tintColor = UIColor.white
-       
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
     }
     
-
+    @objc func selectImage(){
+        
+    }
+    
+    @IBAction func uploadButtonClicked(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 

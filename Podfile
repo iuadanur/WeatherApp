@@ -9,5 +9,5 @@ target 'WeatherApp' do
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
-
+pod 'Firebase/Storage'
 end
