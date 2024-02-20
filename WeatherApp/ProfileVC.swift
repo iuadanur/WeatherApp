@@ -20,8 +20,10 @@ class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //  firebaseUserModel()
+        firebaseUserModel()
         navigationBarCustomization()
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+        profileImage.clipsToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +81,7 @@ class ProfileVC: UIViewController {
         }
     }
     
-/*    func firebaseUserModel() {
+    func firebaseUserModel() {
         guard let userId = Auth.auth().currentUser?.uid else {
             print("Kullanıcı kimliği bulunamadı.")
             return
@@ -106,7 +108,7 @@ class ProfileVC: UIViewController {
                 }
             }
         }
-    } */
+    } 
 
     func getDefaultProfileImage() -> String? {
         // Varsayılan profil resmini almak için uygun bir yol buraya ekleyin
