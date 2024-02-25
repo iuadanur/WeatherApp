@@ -13,10 +13,12 @@ class ProfileVC: UIViewController {
 
     
     @IBOutlet weak var profileImage: UIImageView!
-    
     @IBOutlet weak var usernameLabel: UILabel!
-    
     @IBOutlet weak var joinedLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var favoritePostsLabel: UILabel!
+    
+    private var posts: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +26,14 @@ class ProfileVC: UIViewController {
         navigationBarCustomization()
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("View will appear, updating user info...")
         updateUserInfo()
+        getPosts()
     }
     
     func updateUserInfo() {
@@ -109,7 +114,45 @@ class ProfileVC: UIViewController {
             }
         }
     } 
-
+    func getPosts() {
+        
+        let db = Firestore.firestore()
+        
+        db.collection("Posts").whereField("postedBy", isEqualTo: Auth.auth().currentUser?.email! as Any).whereField("isFavorite", isEqualTo: true).getDocuments { snapshot, error in
+            
+            if error != nil {
+                print("\(String(describing: error))")
+            } else {
+                guard let snapshot = snapshot else {
+                    print("Snapshot is nil")
+                    return
+                }
+                
+                self.posts = snapshot.documents.compactMap { document in
+                    let data = document.data()
+                    let location = data["location"] as? String ?? ""
+                    let imageUrl = data["imageUrl"] as? String ?? ""
+                    let isFavorite = data["isFavorite"] as? Bool ?? false
+                    let postComment = data["postComment"] as? String ?? ""
+                    let postedBy = data["postedBy"] as? String ?? ""
+                    let timestamp = data["date"] as? Timestamp
+                    // Timestamp'i string formata dönüştür
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd-MM-yyyy" // veya istediğiniz bir format
+                    let formattedDate = dateFormatter.string(from: timestamp?.dateValue() ?? Date()) // Date? değeri String'e dönüştürülüyor
+                    let documentId = document.documentID
+                    
+                    return Post(imageUrl: imageUrl, isFavorite: isFavorite, postComment: postComment, postedBy: postedBy, location: location, postedTime: formattedDate, documentId: documentId)
+                
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+            
+        
+    }
     func getDefaultProfileImage() -> String? {
         // Varsayılan profil resmini almak için uygun bir yol buraya ekleyin
         // Örneğin, bir resim URL'si veya resmin adı gibi
@@ -131,6 +174,7 @@ class ProfileVC: UIViewController {
     }
     @objc func refreshInfo() {
         updateUserInfo()
+        getPosts()
     }
     @IBAction func editProfileTapped(_ sender: Any) {
         performSegue(withIdentifier: "toEditProfileVC", sender: nil)
@@ -148,4 +192,20 @@ class ProfileVC: UIViewController {
     }
     
 
+}
+//MARK: - TableView
+extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
+        let post = posts[indexPath.row]
+        cell.configure(with: post)
+        return cell
+    }
+    
+    
 }

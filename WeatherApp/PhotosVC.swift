@@ -23,6 +23,9 @@ class PhotosVC: UIViewController {
         title = "Photos"
         navigationController?.navigationBar.prefersLargeTitles = false
         getDataFromFirestore()
+        tableView.dataSource = self
+        tableView.delegate = self
+
     }
     @objc func addButtonClicked(){
         self.performSegue(withIdentifier: "toAddPlace", sender: nil)
@@ -75,5 +78,16 @@ extension PhotosVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedLocation = locations[indexPath.row]
+        performSegue(withIdentifier: "toPostsVC", sender: selectedLocation)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toPostsVC", let destinationVC = segue.destination as? PostsVC {
+            // Seçilen konumu ve diğer gerekli verileri PostsVC'ye iletin
+            destinationVC.selectedLocation = sender as? String
+        }
+    }
 }

@@ -24,12 +24,9 @@ class HourlyCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return weatherViewModel.hourlyWeatherModel?.list.count ?? 9
     }
     
@@ -37,11 +34,10 @@ class HourlyCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! collectionViewCell
         if let hourlyList = weatherViewModel.hourlyWeatherModel?.list[indexPath.item] {
                 cell.configure(with: hourlyList)
-            }
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 195)
     }
-    
 }

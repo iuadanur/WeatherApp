@@ -29,6 +29,9 @@
 		9C173DCA2B72DF9B002BF347 /* 50d.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C173DB82B72DF9B002BF347 /* 50d.png */; };
 		9C173DCB2B72DF9B002BF347 /* 09n.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C173DB92B72DF9B002BF347 /* 09n.png */; };
 		9C1D9BE02B3B5BC6006015D1 /* AddPlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1D9BDF2B3B5BC6006015D1 /* AddPlaceVC.swift */; };
+		9C200D192B8527CA00569DCE /* PostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C200D182B8527CA00569DCE /* PostsVC.swift */; };
+		9C200D1D2B853A0500569DCE /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C200D1C2B853A0500569DCE /* PostCell.swift */; };
+		9C200D1F2B853B2C00569DCE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C200D1E2B853B2C00569DCE /* Post.swift */; };
 		9C45365A2B767BCA0008D288 /* tapToUploadImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4536592B767BCA0008D288 /* tapToUploadImage.png */; };
 		9C45365E2B767EE80008D288 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C45365D2B767EE80008D288 /* button.png */; };
 		9C4536622B76E09A0008D288 /* profileVCbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4536612B76E09A0008D288 /* profileVCbackground.png */; };
@@ -91,6 +94,9 @@
 		9C173DB82B72DF9B002BF347 /* 50d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50d.png; sourceTree = "<group>"; };
 		9C173DB92B72DF9B002BF347 /* 09n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09n.png; sourceTree = "<group>"; };
 		9C1D9BDF2B3B5BC6006015D1 /* AddPlaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceVC.swift; sourceTree = "<group>"; };
+		9C200D182B8527CA00569DCE /* PostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsVC.swift; sourceTree = "<group>"; };
+		9C200D1C2B853A0500569DCE /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		9C200D1E2B853B2C00569DCE /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9C4536592B767BCA0008D288 /* tapToUploadImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapToUploadImage.png; sourceTree = "<group>"; };
 		9C45365D2B767EE80008D288 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		9C4536612B76E09A0008D288 /* profileVCbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileVCbackground.png; sourceTree = "<group>"; };
@@ -232,6 +238,9 @@
 				9C173DA32B729FDB002BF347 /* collectionViewCell.swift */,
 				9C173DA42B729FDB002BF347 /* collectionViewCell.xib */,
 				9CBC99122B797C5E00F03519 /* editProfileVC.swift */,
+				9C200D182B8527CA00569DCE /* PostsVC.swift */,
+				9C200D1C2B853A0500569DCE /* PostCell.swift */,
+				9C200D1E2B853B2C00569DCE /* Post.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -424,13 +433,16 @@
 				9CB2ED352B3AE0A1008D4F62 /* PhotosVC.swift in Sources */,
 				9C8EC6102B6729EB0054A998 /* City.swift in Sources */,
 				9CC310E12B41CB5D00B4B150 /* WeatherViewModel.swift in Sources */,
+				9C200D1D2B853A0500569DCE /* PostCell.swift in Sources */,
 				9CB2ED382B3AE100008D4F62 /* FavoriteCell.swift in Sources */,
 				9C7F49742B38D2D600975311 /* RegisteredVC.swift in Sources */,
 				9CBAB4602B66B11200E09CDC /* SearchBarCell.swift in Sources */,
+				9C200D192B8527CA00569DCE /* PostsVC.swift in Sources */,
 				9CA221302B6FD77B00A6927E /* WeatherError.swift in Sources */,
 				9C6C2E702B3716BE00B06AB7 /* SceneDelegate.swift in Sources */,
 				9CA03CA92B65ADEE00639F66 /* API.swift in Sources */,
 				9CBAB4642B66CC3200E09CDC /* HourlyCell.swift in Sources */,
+				9C200D1F2B853B2C00569DCE /* Post.swift in Sources */,
 				9C1D9BE02B3B5BC6006015D1 /* AddPlaceVC.swift in Sources */,
 				9C173DA52B729FDB002BF347 /* collectionViewCell.swift in Sources */,
 			);
