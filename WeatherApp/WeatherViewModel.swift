@@ -19,7 +19,6 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var webservice = Webservice.shared
     
     private override init() {
-        // Konum yöneticisi (location manager) konum değişikliklerini takip edecek şekilde ayarlanıyor.
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -47,7 +46,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func getLocation(completion: @escaping (Result<CLLocation, Error>) -> Void) {
-        geocoder.geocodeAddressString(city.shared.name) { [weak self] (placemarks, error) in
+        geocoder.geocodeAddressString(City.shared.name) { [weak self] (placemarks, error) in
             guard self != nil else { return }
             if let error = error {
                 completion(.failure(error))
@@ -75,9 +74,8 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
         
         let dispatchGroup = DispatchGroup()
-        
-        // WeatherModel verilerini çek
         dispatchGroup.enter()
+        // Fetch WeatherModel
         webservice.fetchData(url: urlWeather) { (result: Result<WeatherModel, WeatherError>) in
             switch result {
             case .success(let weatherModel):
@@ -88,8 +86,7 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
             dispatchGroup.leave()
         }
-        
-        // HourlyModel verilerini çek
+        // Fetch HourlyModel
         dispatchGroup.enter()
         webservice.fetchData(url: urlHourly) { (result: Result<HourlyModel, WeatherError>) in
             switch result {
@@ -101,8 +98,6 @@ class WeatherViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
             dispatchGroup.leave()
         }
-        
-        // Her iki veri türünün de çekilmesini bekleyin ve UI güncellemesini yapın
         dispatchGroup.notify(queue: .main) {
             completion(.success(()))
         }

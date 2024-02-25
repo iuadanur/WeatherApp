@@ -11,7 +11,6 @@ import FirebaseFirestore
 
 class ProfileVC: UIViewController {
 
-    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var joinedLabel: UILabel!
@@ -35,11 +34,11 @@ class ProfileVC: UIViewController {
         updateUserInfo()
         getPosts()
     }
-    
+//MARK: - Update UserInfo
     func updateUserInfo() {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy" // Dönüştürmek istediğiniz tarih biçimi
+        dateFormatter.dateFormat = "dd/MM/yyyy"
 
         if let currentUser = Auth.auth().currentUser {
             let userId = currentUser.uid
@@ -53,16 +52,12 @@ class ProfileVC: UIViewController {
                     if let userImage = self.profileImage.image {
                         if let userImageURLString = document["userImageURL"] as? String,
                            let userImageURL = URL(string: userImageURLString) {
-                            // URL'yi kullanarak resmi indir
                             URLSession.shared.dataTask(with: userImageURL) { (data, response, error) in
-                                // Hata kontrolü
                                 if let error = error {
                                     print("Resim indirme hatası: \(error.localizedDescription)")
                                     return
                                 }
-                                // Veri kontrolü ve resmi oluşturma
                                 if let data = data, let userImage = UIImage(data: data) {
-                                    // Ana ekranda kullanıcı resmini gösterme
                                     DispatchQueue.main.async {
                                         self.profileImage.image = userImage
                                     }
@@ -73,13 +68,11 @@ class ProfileVC: UIViewController {
                         } else {
                             print("userImageURL dizesi alınamadı veya dönüştürülemedi")
                         }
-
                     }
                 } else {
                     print("Kullanıcı belgesi bulunamadı.")
                 }
             }
-
             if let date = currentUser.metadata.creationDate {
                 joinedLabel.text = "Joined \(dateFormatter.string(from: date))"
             }
@@ -91,19 +84,17 @@ class ProfileVC: UIViewController {
             print("Kullanıcı kimliği bulunamadı.")
             return
         }
-
         let userDocRef = Firestore.firestore().collection("users").document(userId)
 
         userDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 print("Kullanıcı modeli zaten oluşturulmuş.")
             } else {
-                // Kullanıcı modeli oluştur
-                let defaultImage = self.getDefaultProfileImage() // Varsayılan profil resmi alınıyor
+                //Create a user model
+                let defaultImage = "person.circle"
                 userDocRef.setData([
-                    "username": Auth.auth().currentUser!.email!, // Varsayılan kullanıcı adı
-                    "userImage": defaultImage, // Varsayılan profil resmi
-                    // Diğer kullanıcı özellikleri buraya eklenebilir
+                    "username": Auth.auth().currentUser!.email!,
+                    "userImage": defaultImage,
                 ]) { error in
                     if let error = error {
                         print("Kullanıcı belgesi oluşturulurken hata oluştu: \(error)")
@@ -113,9 +104,9 @@ class ProfileVC: UIViewController {
                 }
             }
         }
-    } 
+    }
+//MARK: - Get Favorite Posts
     func getPosts() {
-        
         let db = Firestore.firestore()
         
         db.collection("Posts").whereField("postedBy", isEqualTo: Auth.auth().currentUser?.email! as Any).whereField("isFavorite", isEqualTo: true).getDocuments { snapshot, error in
@@ -136,10 +127,10 @@ class ProfileVC: UIViewController {
                     let postComment = data["postComment"] as? String ?? ""
                     let postedBy = data["postedBy"] as? String ?? ""
                     let timestamp = data["date"] as? Timestamp
-                    // Timestamp'i string formata dönüştür
+                    // Convert Timestamp into String
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd-MM-yyyy" // veya istediğiniz bir format
-                    let formattedDate = dateFormatter.string(from: timestamp?.dateValue() ?? Date()) // Date? değeri String'e dönüştürülüyor
+                    dateFormatter.dateFormat = "dd-MM-yyyy"
+                    let formattedDate = dateFormatter.string(from: timestamp?.dateValue() ?? Date())
                     let documentId = document.documentID
                     
                     return Post(imageUrl: imageUrl, isFavorite: isFavorite, postComment: postComment, postedBy: postedBy, location: location, postedTime: formattedDate, documentId: documentId)
@@ -150,21 +141,11 @@ class ProfileVC: UIViewController {
                 }
             }
         }
-            
-        
     }
-    func getDefaultProfileImage() -> String? {
-        // Varsayılan profil resmini almak için uygun bir yol buraya ekleyin
-        // Örneğin, bir resim URL'si veya resmin adı gibi
-        // Burada sadece örnek bir değer döndürüyorum
-        return "person.circle"
-    }
-
-    
+//MARK: - NavigationBar
     func navigationBarCustomization(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonClicked))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -179,8 +160,7 @@ class ProfileVC: UIViewController {
     @IBAction func editProfileTapped(_ sender: Any) {
         performSegue(withIdentifier: "toEditProfileVC", sender: nil)
     }
-    
-    
+//MARK: - Logout
     @objc func logoutButtonClicked() {
         let firebaseAuth = Auth.auth()
         do {
@@ -190,8 +170,6 @@ class ProfileVC: UIViewController {
           print("Error signing out: %@", signOutError)
         }
     }
-    
-
 }
 //MARK: - TableView
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
@@ -206,6 +184,4 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         cell.configure(with: post)
         return cell
     }
-    
-    
 }

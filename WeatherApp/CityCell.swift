@@ -11,15 +11,10 @@ class CityCell: UITableViewCell {
 
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cityNameLabel: UILabel!
-    
     @IBOutlet weak var degreeLabel: UILabel!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var tempMinLabel: UILabel!
-    
     @IBOutlet weak var tempMaxLabel: UILabel!
-    
     @IBOutlet weak var weatherIcon: UIImageView!
     
     override func awakeFromNib() {
@@ -29,8 +24,5 @@ class CityCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
 }

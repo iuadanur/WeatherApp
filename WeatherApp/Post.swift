@@ -24,5 +24,5 @@ class Post {
             self.location = location
             self.postedTime = postedTime
             self.documentId = documentId
-        }
+    }
 }

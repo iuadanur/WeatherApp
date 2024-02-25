@@ -13,7 +13,6 @@ class HourlyCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDat
     
     let weatherViewModel = WeatherViewModel.shared
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.register(UINib(nibName: "collectionViewCell", bundle: nil), forCellWithReuseIdentifier: "collectionViewCell")

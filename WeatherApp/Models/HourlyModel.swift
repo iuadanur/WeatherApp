@@ -12,11 +12,11 @@ struct HourlyModel: Codable {
     let cod: String
     let message,cnt: Int
     let list: [HourlyList]
-    let city: City
+    let city: HourlyCity
 }
 
 // MARK: - City
-struct City: Codable {
+struct HourlyCity: Codable {
     let id: Int
     let name: String
     let coord: HourlyCoord

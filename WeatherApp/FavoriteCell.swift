@@ -14,8 +14,6 @@ class FavoriteCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         cellView.backgroundColor = UIColor.clear
     }
-    
 }

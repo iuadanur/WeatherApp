@@ -19,8 +19,9 @@ class PostsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.navigationBar.tintColor = .systemBlue
         title = selectedLocation ?? "Posts"
-               
+        
         if let location = selectedLocation {
             getPosts(for: location)
         }
@@ -50,10 +51,10 @@ class PostsVC: UIViewController {
                             let postComment = data["postComment"] as? String ?? ""
                             let postedBy = data["postedBy"] as? String ?? ""
                             let timestamp = data["date"] as? Timestamp
-                            // Timestamp'i string formata dönüştür
+                            //Converting Timestamp into Date
                             let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "dd-MM-yyyy" // veya istediğiniz bir format
-                            let formattedDate = dateFormatter.string(from: timestamp?.dateValue() ?? Date()) // Date? değeri String'e dönüştürülüyor
+                            dateFormatter.dateFormat = "dd-MM-yyyy"
+                            let formattedDate = dateFormatter.string(from: timestamp?.dateValue() ?? Date())
                             let documentId = document.documentID
                             
                             return Post(imageUrl: imageUrl, isFavorite: isFavorite, postComment: postComment, postedBy: postedBy, location: location, postedTime: formattedDate, documentId: documentId)
@@ -79,5 +80,4 @@ extension PostsVC: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: post)
         return cell
     }
-    
 }

@@ -653,13 +653,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3R-h1-9FZ">
-                                                    <rect key="frame" x="56.666666666666664" y="15" width="65.333333333333343" height="20.333333333333329"/>
+                                                    <rect key="frame" x="56.666666666666664" y="14.999999999999998" width="65.333333333333343" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-SO-O5c">
-                                                    <rect key="frame" x="300.66666666666669" y="14" width="36" height="20.333333333333329"/>
+                                                    <rect key="frame" x="300.66666666666669" y="13.999999999999998" width="36" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1049,7 +1049,7 @@
         <image name="button.png" width="240" height="35"/>
         <image name="checkmark.circle" catalog="system" width="128" height="123"/>
         <image name="editProfile.png" width="310" height="35"/>
-        <image name="eye.slash.fill" catalog="system" width="32" height="32"/>
+        <image name="eye.slash.fill" catalog="system" width="128" height="85"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
         <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <image name="photo" catalog="system" width="128" height="93"/>

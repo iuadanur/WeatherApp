@@ -7,9 +7,9 @@
 
 import Foundation
 
-class city {
+class City {
     
-    static let shared = city()
+    static let shared = City()
     var name = ""
     
     private init(){}

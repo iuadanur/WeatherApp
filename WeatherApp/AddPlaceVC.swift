@@ -13,13 +13,9 @@ import FirebaseAuth
 class AddPlaceVC: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    
     @IBOutlet weak var backgroundImage: UIImageView!
-    
     @IBOutlet weak var darkImage: UIImageView!
-    
     @IBOutlet weak var locationTextField: UITextField!
-    
     @IBOutlet weak var commentTextField: UITextField!
     
     var imagePicker = UIImagePickerController()

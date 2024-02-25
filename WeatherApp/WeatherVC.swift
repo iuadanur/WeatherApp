@@ -28,8 +28,8 @@ class WeatherVC: UIViewController {
         refreshControl.addTarget(self, action: #selector(refreshWeatherData), for: .valueChanged)
         setupTabbar()
         fetchDataAndUpdateUI()
-        
     }
+//MARK: - Refresh Data
     @objc func refreshWeatherData(_ sender: Any) {
         fetchDataAndUpdateUI()
         
@@ -37,17 +37,16 @@ class WeatherVC: UIViewController {
             self.refreshControl.endRefreshing()
         }
     }
-    
+//MARK: - TabBar
     func setupTabbar() {
         tabBarController?.tabBar.backgroundColor = .white.withAlphaComponent(0.8)
     }
-    
+//MARK: - Fetch Data
     func fetchDataAndUpdateUI() {
         weatherViewModel.fetchData { result in
             switch result {
             case .success:
                 print("Weather data fetched successfully")
-                // WeatherModel verileri çekildikten sonra UI güncelleme
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                     self.updateUI()
@@ -59,25 +58,18 @@ class WeatherVC: UIViewController {
     }
 
     func updateUI() {
-        
         if let WeatherModel = weatherViewModel.model {
             
             let cityName = WeatherModel.name
             let temperature = WeatherModel.main.temp
             let tempMin = WeatherModel.main.tempMin
             let tempMax = WeatherModel.main.tempMax
-            //var id = 0
             var main = ""
-            //var description = ""
             let icon = WeatherModel.weather.first?.icon ?? "01d"
             for weatherInfo in WeatherModel.weather {
-                    //id = weatherInfo.id
                     main = weatherInfo.description
-                    //description = weatherInfo.description
-                }
-            
+            }
             DispatchQueue.main.async {
-                // TableView'ın ilk hücresini güncelle
                 if let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? CityCell {
                     cell.cityNameLabel.text = cityName
                     cell.degreeLabel.text = "\(String(format: "%.1f", temperature))°C"
@@ -95,7 +87,7 @@ class WeatherVC: UIViewController {
         }
     }
 }
-    //MARK: - Tableview Delegate&DataSource
+//MARK: - Tableview Delegate&DataSource
 extension WeatherVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
