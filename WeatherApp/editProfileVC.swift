@@ -14,6 +14,9 @@ class editProfileVC: UIViewController, UIImagePickerControllerDelegate & UINavig
 
     @IBOutlet weak var changeImage: UIImageView!
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var darkImage: UIImageView!
+    @IBOutlet weak var profileVCbackground: UIImageView!
     
     var imagePicker = UIImagePickerController()
     
@@ -26,6 +29,7 @@ class editProfileVC: UIViewController, UIImagePickerControllerDelegate & UINavig
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeImageTapped))
         changeImage.addGestureRecognizer(tapGesture)
+        navigationController?.navigationBar.tintColor = UIColor.white
     }
 //MARK: - TextFields
     func fillTextFields() {

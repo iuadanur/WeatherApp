@@ -32,7 +32,7 @@ class PostsVC: UIViewController {
         guard let currentUserEmail = Auth.auth().currentUser?.email else {
                 print("Current user email not found")
                 return
-            }
+        }
         let db = Firestore.firestore()
         
         db.collection("Posts")

@@ -50,6 +50,8 @@
 		9CA03CAD2B65BD4500639F66 /* API+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA03CAC2B65BD4500639F66 /* API+Extension.swift */; };
 		9CA03CAF2B65C60100639F66 /* HourlyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA03CAE2B65C60100639F66 /* HourlyModel.swift */; };
 		9CA221302B6FD77B00A6927E /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA2212F2B6FD77B00A6927E /* WeatherError.swift */; };
+		9CB0D3132B8D148A00ADDA1C /* tapToChangeImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CB0D3122B8D148A00ADDA1C /* tapToChangeImage2.png */; };
+		9CB0D3152B8D1A6B00ADDA1C /* appIcon.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB0D3142B8D1A6B00ADDA1C /* appIcon.jpeg */; };
 		9CB2ED352B3AE0A1008D4F62 /* PhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2ED342B3AE0A1008D4F62 /* PhotosVC.swift */; };
 		9CB2ED382B3AE100008D4F62 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2ED362B3AE100008D4F62 /* FavoriteCell.swift */; };
 		9CB2ED392B3AE100008D4F62 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB2ED372B3AE100008D4F62 /* FavoriteCell.xib */; };
@@ -59,7 +61,6 @@
 		9CBAB4642B66CC3200E09CDC /* HourlyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBAB4622B66CC3200E09CDC /* HourlyCell.swift */; };
 		9CBAB4652B66CC3200E09CDC /* HourlyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CBAB4632B66CC3200E09CDC /* HourlyCell.xib */; };
 		9CBC99132B797C5E00F03519 /* editProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CBC99122B797C5E00F03519 /* editProfileVC.swift */; };
-		9CBC99152B797C9B00F03519 /* tapToChangeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBC99142B797C9B00F03519 /* tapToChangeImage.png */; };
 		9CC310D72B41843100B4B150 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC310D62B41843100B4B150 /* Tabbar.swift */; };
 		9CC310DA2B41C0ED00B4B150 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC310D82B41C0EC00B4B150 /* CityCell.swift */; };
 		9CC310DB2B41C0ED00B4B150 /* CityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CC310D92B41C0ED00B4B150 /* CityCell.xib */; };
@@ -117,6 +118,8 @@
 		9CA03CAC2B65BD4500639F66 /* API+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Extension.swift"; sourceTree = "<group>"; };
 		9CA03CAE2B65C60100639F66 /* HourlyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyModel.swift; sourceTree = "<group>"; };
 		9CA2212F2B6FD77B00A6927E /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
+		9CB0D3122B8D148A00ADDA1C /* tapToChangeImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapToChangeImage2.png; sourceTree = "<group>"; };
+		9CB0D3142B8D1A6B00ADDA1C /* appIcon.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = appIcon.jpeg; sourceTree = "<group>"; };
 		9CB2ED342B3AE0A1008D4F62 /* PhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVC.swift; sourceTree = "<group>"; };
 		9CB2ED362B3AE100008D4F62 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		9CB2ED372B3AE100008D4F62 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
@@ -126,7 +129,6 @@
 		9CBAB4622B66CC3200E09CDC /* HourlyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyCell.swift; sourceTree = "<group>"; };
 		9CBAB4632B66CC3200E09CDC /* HourlyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyCell.xib; sourceTree = "<group>"; };
 		9CBC99122B797C5E00F03519 /* editProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editProfileVC.swift; sourceTree = "<group>"; };
-		9CBC99142B797C9B00F03519 /* tapToChangeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tapToChangeImage.png; sourceTree = "<group>"; };
 		9CC310D62B41843100B4B150 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
 		9CC310D82B41C0EC00B4B150 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		9CC310D92B41C0ED00B4B150 /* CityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityCell.xib; sourceTree = "<group>"; };
@@ -160,9 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				9C4536592B767BCA0008D288 /* tapToUploadImage.png */,
-				9CBC99142B797C9B00F03519 /* tapToChangeImage.png */,
 				9C4536632B76E6DE0008D288 /* editProfile.png */,
+				9CB0D3122B8D148A00ADDA1C /* tapToChangeImage2.png */,
 				9C4536612B76E09A0008D288 /* profileVCbackground.png */,
+				9CB0D3142B8D1A6B00ADDA1C /* appIcon.jpeg */,
 				9C45365D2B767EE80008D288 /* button.png */,
 				9C173DB12B72DF9A002BF347 /* 01d.png */,
 				9C173DAA2B72DF9A002BF347 /* 01n.png */,
@@ -336,6 +339,7 @@
 			files = (
 				9C173DC82B72DF9B002BF347 /* 02d.png in Resources */,
 				9C173DC52B72DF9B002BF347 /* 13n.png in Resources */,
+				9CB0D3152B8D1A6B00ADDA1C /* appIcon.jpeg in Resources */,
 				9C173DC62B72DF9B002BF347 /* 10d.png in Resources */,
 				9C45365A2B767BCA0008D288 /* tapToUploadImage.png in Resources */,
 				9C173DCB2B72DF9B002BF347 /* 09n.png in Resources */,
@@ -345,6 +349,7 @@
 				9CC310DB2B41C0ED00B4B150 /* CityCell.xib in Resources */,
 				9C173DC02B72DF9B002BF347 /* 04d.png in Resources */,
 				9C173DC32B72DF9B002BF347 /* 01d.png in Resources */,
+				9CB0D3132B8D148A00ADDA1C /* tapToChangeImage2.png in Resources */,
 				9C45365E2B767EE80008D288 /* button.png in Resources */,
 				9C6C2E7A2B3716BF00B06AB7 /* LaunchScreen.storyboard in Resources */,
 				9CBAB4652B66CC3200E09CDC /* HourlyCell.xib in Resources */,
@@ -358,7 +363,6 @@
 				9C173DBA2B72DF9B002BF347 /* 03n.png in Resources */,
 				9C173DCA2B72DF9B002BF347 /* 50d.png in Resources */,
 				9C173DC92B72DF9B002BF347 /* 11n.png in Resources */,
-				9CBC99152B797C9B00F03519 /* tapToChangeImage.png in Resources */,
 				9C173DC42B72DF9B002BF347 /* 50n.png in Resources */,
 				9C173DBB2B72DF9B002BF347 /* 09d.png in Resources */,
 				9C173DBC2B72DF9B002BF347 /* 01n.png in Resources */,
