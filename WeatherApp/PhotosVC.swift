@@ -12,8 +12,10 @@ import FirebaseAuth
 class PhotosVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-
+    
+    var refresh = UIRefreshControl()
     var locations: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +26,15 @@ class PhotosVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         getDataFromFirestore()
+        refresh.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        tableView.addSubview(refresh)
+    }
+    @objc func refreshTableView() {
+        getDataFromFirestore()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.refresh.endRefreshing()
+        }
     }
     @objc func addButtonClicked(){
         self.performSegue(withIdentifier: "toAddPlace", sender: nil)

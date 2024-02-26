@@ -49,29 +49,13 @@ class ProfileVC: UIViewController {
                     if let username = document["username"] as? String {
                         self.usernameLabel.text = username
                     }
-                    if let userImage = self.profileImage.image {
                         if let userImageURLString = document["userImageURL"] as? String,
                            let userImageURL = URL(string: userImageURLString) {
-                            URLSession.shared.dataTask(with: userImageURL) { (data, response, error) in
-                                if let error = error {
-                                    print("Resim indirme hatası: \(error.localizedDescription)")
-                                    return
-                                }
-                                if let data = data, let userImage = UIImage(data: data) {
-                                    DispatchQueue.main.async {
-                                        self.profileImage.image = userImage
-                                    }
-                                } else {
-                                    print("Resim verisi boş veya hatalı")
-                                }
-                            }.resume()
+                            self.profileImage.sd_setImage(with: userImageURL)
                         } else {
                             print("userImageURL dizesi alınamadı veya dönüştürülemedi")
                         }
                     }
-                } else {
-                    print("Kullanıcı belgesi bulunamadı.")
-                }
             }
             if let date = currentUser.metadata.creationDate {
                 joinedLabel.text = "Joined \(dateFormatter.string(from: date))"

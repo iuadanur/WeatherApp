@@ -61,7 +61,6 @@ struct WeatherWind: Codable {
 
 // MARK: - WeatherSys
 struct WeatherSys: Codable {
-    let type, id: Int
     let country: String
     let sunrise, sunset: Int
 }

@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import SDWebImage
 
 class PostCell: UITableViewCell {
 
@@ -58,15 +59,7 @@ class PostCell: UITableViewCell {
             favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
         }
         
-        if let imageUrl = URL(string: post.imageUrl) {
-            DispatchQueue.global().async {
-                if let imageData = try? Data(contentsOf: imageUrl) {
-                    DispatchQueue.main.async {
-                        self.postImage.image = UIImage(data: imageData)
-                    }
-                }
-            }
-        }
+        postImage.sd_setImage(with: URL(string: post.imageUrl))
     }
     func updateFavoriteStatusInFirestore() {
         guard (Auth.auth().currentUser?.email) != nil else {
