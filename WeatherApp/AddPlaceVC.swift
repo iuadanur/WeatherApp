@@ -23,7 +23,7 @@ class AddPlaceVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.tintColor = .white
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
         imageView.addGestureRecognizer(gestureRecognizer)
         imagePicker.delegate = self

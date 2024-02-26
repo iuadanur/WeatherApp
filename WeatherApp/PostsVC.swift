@@ -19,7 +19,7 @@ class PostsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.tintColor = .systemBlue
+        navigationController?.navigationBar.tintColor = .black
         title = selectedLocation ?? "Posts"
         
         if let location = selectedLocation {
