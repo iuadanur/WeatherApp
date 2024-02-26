@@ -51,7 +51,12 @@ class PostCell: UITableViewCell {
         usernameLabel.text = post.postedBy
         commentLabel.text = post.postComment
         dateLabel.text = post.postedTime
-        favoriteButton.isSelected = post.isFavorite
+        
+        if post.isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        }
         
         if let imageUrl = URL(string: post.imageUrl) {
             DispatchQueue.global().async {

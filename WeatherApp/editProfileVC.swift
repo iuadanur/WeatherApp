@@ -24,9 +24,8 @@ class editProfileVC: UIViewController, UIImagePickerControllerDelegate & UINavig
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(backButtonTapped))
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeImageTapped))
-                changeImage.addGestureRecognizer(tapGesture)
+        changeImage.addGestureRecognizer(tapGesture)
     }
 //MARK: - TextFields
     func fillTextFields() {
@@ -56,10 +55,6 @@ class editProfileVC: UIViewController, UIImagePickerControllerDelegate & UINavig
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
-    }
-// MARK: - Back Button
-    @objc func backButtonTapped(){
-        self.dismiss(animated: true)
     }
 // MARK: - Open Gallery and Camera
     func openGallery() {
